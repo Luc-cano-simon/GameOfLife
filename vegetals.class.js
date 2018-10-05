@@ -1,6 +1,7 @@
-function vegetals (nom, hp, x, y )
+function vegetals (nom, apparence, hp, x, y )
 {
 	this.nom = nom;
+	this.apparence = apparence;
 	this.hp = hp;
 	this.x = x;
 	this.y = y;
@@ -8,6 +9,7 @@ function vegetals (nom, hp, x, y )
 }
 	
 	
-var grass = new vegetals("herbe", 5 , 5 , 10, [] );
+	
+var grass = new vegetals("herbe",'<img src="grass.png" width="60px">', 5 , 5 , 10);
 	
 	

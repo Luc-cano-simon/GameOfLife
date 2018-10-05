@@ -76,8 +76,8 @@ var tabYshu = ytab;
 		
 $('carnivorous.class.js', function() 
 {
-	$("#" + tabXshu[1] + "C" + tabYshu[4]).append(lion.nom);
-	$("#" + tabXshu[2] + "C" + tabYshu[5]).append(tigre.nom);
+	$("#" + tabXshu[1] + "C" + tabYshu[4]).append(lion.apparence);
+	$("#" + tabXshu[2] + "C" + tabYshu[5]).append(tigre.apparence);
 })
 												
 
@@ -85,7 +85,12 @@ $('carnivorous.class.js', function()
 
 $('vegetals.class.js', function() 
 {
-	$("#" + tabXshu[3] + "C" + tabYshu[14]).append(grass.nom);
+	$("#" + tabXshu[3] + "C" + tabYshu[14]).append(grass.apparence);
+})
+
+$('herbivorous.class.js', function() 
+{
+	$("#" + tabXshu[6] + "C" + tabYshu[12]).append(biche.apparence);
 })
 		
 // Fonction click pour commencer à faire pousser l'herbe
@@ -95,13 +100,13 @@ $('vegetals.class.js', function()
 
 $( "#herbe" ).click(function() 
 {
-	stopHerbe = setInterval(function()
+	herbe = setInterval(function()
 	{
 		shuffleX(xtab);
 		shuffleY(ytab);
 		$('vegetals.class.js', function() 
 		{
-			$("#" + tabXshu[3] + "C" + tabYshu[14]).append(grass.nom);
+			$("#" + tabXshu[3] + "C" + tabYshu[14]).append(grass.apparence);
 		})
 		
 	},
@@ -111,25 +116,20 @@ $( "#herbe" ).click(function()
 
 											// Fonction pour arrêter tout grace au bouton STOOOOOP 
 	
-$( "#stop" ).click(function() 
-{
-	clearInterval(stopHerbe);
-	clearInterval(stopCarnivor);
-	
-});
 
 											// Fonction pour ajouter des Carnivores
 
 
 $( "#carnivor" ).click(function() 
 {
-	stopCarnivor = setInterval(function()
+	carnivor = setInterval(function()
 	{
 		shuffleX(xtab);
 		shuffleY(ytab);
 		$('carnivorous.class.js', function() 
 		{
-			$("#" + tabXshu[3] + "C" + tabYshu[14]).append(lion.nom);
+			$("#" + tabXshu[3] + "C" + tabYshu[14]).append(lion.apparence);
+			$("#" + tabXshu[7] + "C" + tabYshu[8]).append(tigre.apparence);
 		})
 		
 	},
@@ -137,6 +137,34 @@ $( "#carnivor" ).click(function()
 
 });
 
+
+$( "#vegetarien" ).click(function() 
+{
+	vegetarien = setInterval(function()
+	{
+		shuffleX(xtab);
+		shuffleY(ytab);
+		$('herbivorous.class.js', function() 
+		{
+			$("#" + tabXshu[3] + "C" + tabYshu[17]).append(biche.apparence);
+	
+		})
+		
+	},
+	800);
+
+});
+
+$( "#stop" ).click(function() 
+{
+	clearInterval(herbe);
+	clearInterval(carnivor);
+	clearInterval(vegetarien);
+});
+	
+
+	
+	
 
     // $("herbe").click(function()
     // {
