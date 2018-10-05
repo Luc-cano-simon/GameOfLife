@@ -1,0 +1,34 @@
+body 
+{
+   margin: 10pt;
+}
+
+tr 
+{
+   border: solid;
+   border-width: 2pt;
+}
+
+td 
+{
+   border: solid;
+   border-width: 2pt;
+   height: 25pt;
+}
+
+.table 
+{
+   margin : 10px auto auto auto;
+}
+
+#grille
+{
+   display:block;
+   margin:auto;
+
+}
+
+#id
+{
+   background-color: red;
+}
