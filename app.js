@@ -1,9 +1,11 @@
 
 
-// tableau 
+// tableau avec coordonnées X et Y 
 
-var x = 11;
-var y = 21;
+
+var x = 10;
+var y = 20;
+
 var empty=
 {
 	name:"",
@@ -24,14 +26,20 @@ function table (x, y)
 		}          
 	}  
 }
+
+// On appel la fonction table
+
 table(x, y);
 
 
-
+// Création du tableau à mélanger 
 
 var xtab = new Array(1,2,3,4, 5, 6, 7, 8, 9, 10);
 var ytab = new Array(1,2,3,4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20);
 
+
+
+// Fonction mélanger Y
 
 function shuffleY(ytab)
 {
@@ -46,6 +54,10 @@ function shuffleY(ytab)
 	return ytab;
 }
 
+
+// Fonction mélanger X
+
+
 function shuffleX(xtab)
 {
 	var j, x, i;
@@ -59,43 +71,18 @@ function shuffleX(xtab)
 	return xtab;
 }
 
+// On appel la fonction shuffleX & shuffleY
+
+
 shuffleX(xtab);
 shuffleY(ytab);
+
 
 
 var tabXshu = xtab;
 var tabYshu = ytab;
 
-
-
-
-// 
-
-
-												// Fonction afficher les carnivorous
-		
-$('carnivorous.class.js', function() 
-{
-	$("#" + tabXshu[1] + "C" + tabYshu[4]).append(lion.apparence);
-	$("#" + tabXshu[2] + "C" + tabYshu[5]).append(tigre.apparence);
-})
-												
-
-												// Fonction Afficher les vegetals
-
-$('vegetals.class.js', function() 
-{
-	$("#" + tabXshu[3] + "C" + tabYshu[14]).append(grass.apparence);
-})
-
-$('herbivorous.class.js', function() 
-{
-	$("#" + tabXshu[6] + "C" + tabYshu[12]).append(biche.apparence);
-})
-		
-// Fonction click pour commencer à faire pousser l'herbe
-
-
+// Fonction click pour ajouter de l herbe
 
 
 $( "#herbe" ).click(function() 
@@ -110,14 +97,15 @@ $( "#herbe" ).click(function()
 		})
 		
 	},
-	800);
+	500);
 
 });
 
-											// Fonction pour arrêter tout grace au bouton STOOOOOP 
-	
 
-											// Fonction pour ajouter des Carnivores
+
+// Fonction click pour ajouter des carnivors
+
+
 
 
 $( "#carnivor" ).click(function() 
@@ -131,12 +119,12 @@ $( "#carnivor" ).click(function()
 			$("#" + tabXshu[3] + "C" + tabYshu[14]).append(lion.apparence);
 			$("#" + tabXshu[7] + "C" + tabYshu[8]).append(tigre.apparence);
 		})
-		
 	},
 	2500);
-
 });
 
+
+// Fonction click pour ajouter les Vegetariens
 
 $( "#vegetarien" ).click(function() 
 {
@@ -147,26 +135,83 @@ $( "#vegetarien" ).click(function()
 		$('herbivorous.class.js', function() 
 		{
 			$("#" + tabXshu[3] + "C" + tabYshu[17]).append(biche.apparence);
-	
+
 		})
-		
+
 	},
 	800);
 
 });
 
+// Pour arrêter les differents setInterval
+
 $( "#stop" ).click(function() 
+
 {
 	clearInterval(herbe);
 	clearInterval(carnivor);
 	clearInterval(vegetarien);
+	clearInterval(stop);
 });
-	
 
-	
-	
 
-    // $("herbe").click(function()
-    // {
-    //     $('td').css("color", "green");
-    // });
+// on stock mes fonction aléatoires dans les deux variables
+
+
+var randomX = x_Aleatoire();
+var randomY = nbAleatoir();
+
+
+console.log("randomX = "+randomX);
+console.log("randomY = "+randomY);
+
+// Fonction aléatoire pour X
+
+function nbAleatoir()
+{
+return Math.floor(Math.random() * Math.floor(20));}
+
+// Fonction aléatoire pour Y
+
+function x_Aleatoire()
+{
+	return Math.floor(Math.random() * Math.floor(10));
+}
+
+
+var lion = new Carnivorous("Lion",'<img src="lion.png" width="60px">', 100 ,-20 , randomX , randomY);
+var tigre = new Carnivorous("Tigre",'<img src="tigre.png" width="60px">', 100 ,-20 , randomX , randomY);
+
+var biche = new Herbivorous("Biche",'<img src="biche.png" width="60px">', 5 , randomX , randomY);
+
+
+// On fait vivre un peu tout ça 
+
+
+$( "#bouger" ).click(function() 
+
+{
+	stop = setInterval(function()
+	{
+		lion.move();
+	    tigre.move();
+		biche.move();
+		
+	},
+	2000);
+});
+		
+
+
+// Fonction attaque (in progress)
+
+
+// function att($pv)
+// 	{
+// 		if (lion == biche) 
+// 		{
+// 			this.pv = 0;
+// 			hide(biche)
+// 		}
+// 		console.log(biche)
+// 	}
